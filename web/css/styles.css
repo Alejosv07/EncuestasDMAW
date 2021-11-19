@@ -53,6 +53,7 @@
     flex-wrap: wrap;
     gap: 2em;
     padding: 1em 3em;
+    min-height: 100vh;
 }
 
 .panelAgregar {
@@ -98,6 +99,17 @@
 .btn--agregar {
     color: var(--blanco);
     background-color: var(--verde);
+}
+
+.btn--imprimir {
+    color: var(--blanco);
+    background-color: var(--morado);
+}
+
+.btn--imprimir-todo {
+    color: var(--blanco);
+    background-color: var(--morado);
+    padding: 1em 0.5em;
 }
 
 .btn--editar {
@@ -278,11 +290,14 @@
 
 .footer {
     display: flex;
+    position: fixed;
+    bottom: 0;
     align-items: center;
     padding: 0.5em 3em;
     gap: 2em;
     background-color: var(--morado);
     color: var(--blanco);
+    width: 100%;
 }
 
 .brandFooter {

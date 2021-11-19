@@ -1,0 +1,46 @@
+<div class="mainbody">
+    <!-- panel de listas de encuentas -->
+    <div class="listSurvey">
+        <h2 class="listSurvey__title">Encuestas</h2>
+        <form action="#" method="get" class="formSearch">
+            <input required="" type="text" name="txtSearchTitle" class="inputBuscador" placeholder="Buscar">
+            <i class="fas fa-search"></i>
+        </form>
+
+        <!-- si hay resgistro mostrar-->
+        <div class="listSurvey__body" id="listSurvey__body">
+            <a class="boxSurvey link2" href="ClienteControlador?nEncuesta=10&amp;name=Pepsi">
+                <p class="boxSurvey__title">Pepsi</p>
+            </a>
+            <a class="boxSurvey link2" href="ClienteControlador?nEncuesta=13&amp;name=Coca Cola">
+                <p class="boxSurvey__title">Coca Cola</p>
+            </a>
+            <!--<div class="boxSurvey">
+                <p class="boxSurvey__title">Salud</p>
+                </div>-->
+        </div>
+    </div>
+    <!-- si no hay registro -->
+    <!-- <h2 class="mensaje">Vaya parece que no hay encuestas registradas.</h2> -->
+
+    <!-- si hay registro mostrar -->
+    <div class="listQuestion" id="listQuestion">
+        <div class="listQuestion__title"><i class="fas fa-list"></i>
+            <p>Pepsi</p>
+        </div>
+        <div class="listQuestion__body">
+            <form action="#" method="get" class="formSearch"> <input required="" type="text" name="txtSearchTitle" class="inputBuscador" placeholder="Buscar"> <i class="fas fa-search"></i> </form>
+            <div class="cards" id="cards">
+                <form class="card" method="post" action="ClienteControlador">
+                    <div class="card__header">
+                        <p class="numero">1)</p>
+                        <a type="submit" name="btnBorrarPregunta" class="btn btn--vacio" href="ClienteControlador?nPregunta=57"> <i class="fas fa-trash-alt"></i> </a>
+                    </div>
+                    <div class="card__body"><input required="" type="text" class="inputText" placeholder="Pregunta" name="txtPregunta" value="hola2"><input required="" type="text" class="inputText" name="txtIDpregunta" style="Display: none;" value="57"><input required="" type="text"
+                            class="inputText" placeholder="Respuesta" style="width: 100%; margin-bottom:1em;" value="12" name="respuesta1"></div><button type="submit" class="btn btnGuardar" name="btnGuardar">Guardar</button> </form>
+            </div>
+
+        </div>
+
+    </div>
+</div>

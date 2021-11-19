@@ -1,0 +1,322 @@
+:root {
+    --morado: #1E1731;
+    --blanco: #FFFFFF;
+    --verde: #28A745;
+    --rojo: #DC3545;
+    --amarillo: #FFC107;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: "Roboto", serif;
+}
+
+.header {
+    background-color: var(--morado);
+}
+
+.ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0.5em 3em;
+    list-style: none;
+}
+
+.brand {
+    color: var(--blanco);
+}
+
+#identificator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    padding: 0 1em;
+    border-radius: 8px;
+    background-color: var(--verde);
+}
+
+.ul>.item:nth-child(2) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--blanco);
+    gap: 1.5em;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 2em;
+    padding: 1em 3em;
+}
+
+.panelAgregar {
+    align-self: flex-end;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.inputText {
+    padding: 0.5em;
+    border: 1px solid var(--verde);
+    border-radius: 10px;
+}
+
+.inputText:focus {
+    outline: none;
+}
+
+.inputText::selection {
+    background-color: var(--verde);
+    color: white;
+}
+
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.5em;
+    border-radius: 8px;
+    border: none;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.btn--vacio {
+    background-color: transparent;
+    color: white;
+}
+
+.btn--agregar {
+    color: var(--blanco);
+    background-color: var(--verde);
+}
+
+.btn--editar {
+    color: var(--blanco);
+    background-color: var(--amarillo);
+}
+
+.btn--eliminar {
+    color: var(--blanco);
+    background-color: var(--rojo);
+}
+
+.mainbody {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    gap: 20em;
+}
+
+.listSurvey {
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* position: sticky; */
+    /* top: 0; */
+    gap: 2em;
+    padding: 0 2em;
+}
+
+.listSurvey__body {
+    overflow: auto;
+    height: 300px;
+}
+
+.boxSurvey {
+    display: block;
+    margin: 1em 0.5em;
+    padding: 0.5em;
+    box-shadow: 0 1px 6px;
+}
+
+.boxSurvey:hover {
+    cursor: pointer;
+    box-shadow: 0 1px 6px var(--verde);
+}
+
+.boxSurvey.active {
+    box-shadow: 0 1px 6px var(--amarillo);
+}
+
+.boxSurvey__title {
+    text-align: center;
+}
+
+.formSearch {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid var(--amarillo);
+}
+
+.inputBuscador {
+    flex-grow: 1;
+    padding: 0.5em;
+    border: none;
+}
+
+.inputBuscador:focus {
+    outline: none;
+}
+
+.listQuestion {
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    border: 1px solid var(--amarillo);
+}
+
+.listQuestion__title {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 360px;
+    padding: 0 1em;
+    border-right: 1px solid var(--amarillo);
+    border-bottom: 1px solid var(--amarillo);
+    font-size: 24px;
+    padding-top: 0.5em;
+}
+
+.listQuestion__title>form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-size: 16px;
+}
+
+.listQuestion__title>form>input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #8e8e8e;
+    width: 100%;
+    padding: 0.5em;
+}
+
+.listQuestion__title>form>.botonera {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.5em;
+}
+
+.boxOption {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 2em;
+    padding: 0.5em;
+    border: 1px solid var(--morado);
+}
+
+.listQuestion>.formSearch {
+    margin: 2em auto;
+}
+
+.listQuestion__body {
+    margin: 2em;
+}
+
+.cards {
+    margin-top: 1em;
+    height: 400px;
+    overflow: auto;
+}
+
+.card {
+    margin: 2em 0.5em;
+    border: 1px solid var(--morado);
+    border-radius: 8px;
+}
+
+.card:hover {
+    border: none;
+    box-shadow: 0 1px 6px var(--morado);
+}
+
+.card__header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    color: var(--morado);
+    padding: 0 1em;
+}
+
+.card__header>.btn {
+    color: var(--rojo);
+}
+
+.card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 0 1em;
+}
+
+.btnGuardar {
+    display: block;
+    margin-bottom: 2em;
+    width: 5em;
+    color: var(--blanco);
+    background-color: var(--verde);
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    padding: 0.5em 3em;
+    gap: 2em;
+    background-color: var(--morado);
+    color: var(--blanco);
+}
+
+.brandFooter {
+    font-size: 1rem;
+}
+
+.link,
+.link:visited {
+    color: white;
+    text-decoration: none;
+}
+
+.link2 {
+    color: inherit;
+    text-decoration: none;
+}
+
+#txtEditarEncuesta:focus {
+    outline: none;
+}
+
+#dinamico {
+    display: flex;
+    flex-direction: column;
+}
+
+#option {
+    background-color: transparent;
+    color: #8e8e8e;
+    border: 1px solid var(--verde);
+    border-radius: 8px;
+    padding: 0.5em;
+}
+
+#option:focus {
+    outline: none;
+}

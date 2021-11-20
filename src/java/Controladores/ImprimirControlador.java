@@ -5,13 +5,25 @@
  */
 package Controladores;
 
+import Clases.Conexion;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperRunManager;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 /**
  *
@@ -29,20 +41,26 @@ public class ImprimirControlador extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, JRException {
+        
         response.setContentType("text/html;charset=UTF-8");
+        Conexion conexion = new Conexion();
+        Connection con = conexion.conectar();
+        File reportFile = new File("/reportes/encuestaNombres.jasper");
+        //File reportFile = new File(application.getRealPath("/reportes/encuestaNombres.jasper"));
+        Map<String, Object> parametro = new HashMap();
+        byte[] bytes = JasperRunManager.runReportToPdf(reportFile.getPath(), parametro, con);
+        response.setContentType("application/pdf");
+        response.setContentLength(bytes.length);
+        ServletOutputStream salida = response.getOutputStream();
+        salida.write(bytes, 0, bytes.length);
+        salida.flush();
+        salida.close();
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ImprimirControlador</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ImprimirControlador at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            out.print("<a href='google.com'>");
         }
     }
 
@@ -58,7 +76,11 @@ public class ImprimirControlador extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (JRException ex) {
+            Logger.getLogger(ImprimirControlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -72,7 +94,11 @@ public class ImprimirControlador extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (JRException ex) {
+            Logger.getLogger(ImprimirControlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

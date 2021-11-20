@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="490db573-4095-42b5-adf9-b3fe1e4b86c4">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="dataset1" uuid="7f3fffdb-f56a-4a30-aa72-7d2b322ee8d0"/>
+	<subDataset name="New Dataset 1" uuid="57b2e93e-5d41-43f1-a0d8-f99b323c5208">
+		<queryString language="SQL">
+			<![CDATA[SELECT * FROM tblencuesta]]>
+		</queryString>
+		<field name="encuestaId" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="encuestaNombre" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<group name="encuestaId">
+			<groupExpression><![CDATA[$F{encuestaId}]]></groupExpression>
+		</group>
+		<group name="encuestaNombre">
+			<groupExpression><![CDATA[$F{encuestaNombre}]]></groupExpression>
+		</group>
+	</subDataset>
+	<queryString>
+		<![CDATA[SELECT
+     tblencuesta.`encuestaId` AS ID,
+     tblencuesta.`encuestaNombre` AS Nombre
+FROM
+     `tblencuesta` tblencuesta]]>
+	</queryString>
+	<field name="ID" class="java.lang.Integer"/>
+	<field name="Nombre" class="java.lang.String"/>
+	<variable name="Nombre_1" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{Nombre}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="97" splitType="Stretch">
+			<staticText>
+				<reportElement x="154" y="29" width="247" height="36" uuid="28285b44-1fdd-4cfb-ac87-7d769d5ae5a9"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Encuestas Creadas]]></text>
+			</staticText>
+			<image>
+				<reportElement x="401" y="10" width="140" height="87" uuid="bfbc2e0a-a451-46f5-9a80-783336688cfe"/>
+				<imageExpression><![CDATA["D:\\Code\\NetBeansProjects\\reportes\\web\\img\\informe.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement x="123" y="2" width="100" height="20" uuid="fe6e47e4-d41e-4e1e-8eb4-21ecda4b6f8c"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="277" y="2" width="100" height="20" uuid="d59d4193-b893-4079-bf3a-070abf399bf0"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<line>
+				<reportElement x="73" y="25" width="443" height="1" uuid="74fd9341-bbb0-4dcd-a8ea-3d07d65f717d"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="36" splitType="Stretch">
+			<textField>
+				<reportElement x="123" y="6" width="100" height="20" uuid="bb9692a6-3831-45ea-82cd-86867c783075"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="277" y="6" width="100" height="20" uuid="df9f8576-e49b-4990-8a11-4040ce0ef2ea"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="16" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="48" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="389" y="11" width="85" height="31" uuid="5b347918-b9bf-48cf-8c0d-9ee220c7783c"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="144" y="11" width="233" height="31" uuid="415ac163-5104-4efc-a079-8d1864a6eecd"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Fecha de generacion de reporte:]]></text>
+			</staticText>
+			<textField pattern="h.mm a">
+				<reportElement x="474" y="11" width="81" height="31" uuid="6c2ed2c2-acad-46d5-af17-97a2d4adfa80"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="27" splitType="Stretch">
+			<textField>
+				<reportElement x="314" y="7" width="100" height="20" uuid="4790d770-97e0-40b9-a281-a03960d10745"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{Nombre_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="123" y="7" width="100" height="20" uuid="439ff2d2-2a36-44dc-a762-76194080eebd"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Total:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="73" y="0" width="443" height="1" uuid="332353ae-9a9b-4266-9d3a-403ea410b014"/>
+			</line>
+		</band>
+	</summary>
+</jasperReport>

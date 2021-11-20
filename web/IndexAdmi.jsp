@@ -60,7 +60,7 @@
                 <!-- panel de listas de encuentas -->
                 <div class="listSurvey">
                     <h2 class="listSurvey__title">Encuestas</h2>
-                    <a class="btn btn--imprimir-todo link" href="ImprimirControlador?target=todos" target="_blink"> <i class="fas fa-print"></i></a>
+                    <a class="btn btn--imprimir-todo link" href="pdf.jsp?target=todos" target="_blink"> <i class="fas fa-print"></i></a>
                     <form action="#" method="get" class="formSearch">
                         <input required type="text" name="txtSearchTitle" class="inputBuscador" placeholder="Buscar">
                         <i class="fas fa-search"></i>
@@ -89,7 +89,9 @@
                 <%
                     Encuesta encuesta = (Encuesta) session.getAttribute("encuesta");
                     if (encuesta != null) {
-                        out.print("<div class=\"listQuestion\" id=\"listQuestion\"> <div class=\"listQuestion__title\"> <i class=\"fas fa-list\"></i> <form action=\"EncuestaControlador\" method=\"post\"> <input required type=\"text\" id=\"txtEditarEncuesta\" name=\"txtEditarEncuesta\" value=\"" + encuesta.getEncuestaNombre() + "\"> <div class=\"botonera\"> <button class=\"btn btn--editar\" id=\"btnEditar\" type=\"submit\" name=\"btnEditarEncuesta\">Editar <i class=\"fas fa-pen\"></i></button> <a class=\"btn btn--eliminar link\" href=\"EncuestaControlador?nEncuesta=" + encuesta.getEncuestaId() + "\" id=\"btnEditar\">Eliminar <i class=\"fas fa-trash-alt\"></i></a> <a class=\"btn btn--imprimir link\" href=\"EncuestaControlador?nEncuesta=" + encuesta.getEncuestaId() + "\" id=\"btnEditar\">Imprimir <i class=\"fas fa-file-pdf\"></i></a> </div></form> </div><div class=\"boxOption\"> <button type=\"submit\" name=\"btnAgregar\" class=\"btn btn--agregar\" id=\"btnAgregar\">Agregar <i class=\"fas fa-plus\"></i></button> </div><div class=\"listQuestion__body\"> <form action=\"#\" method=\"get\" class=\"formSearch\"> <input required type=\"text\" name=\"txtSearchTitle\" class=\"inputBuscador\" placeholder=\"Buscar\"> <i class=\"fas fa-search\"></i> </form> <div class=\"cards\" id=\"cards\">");
+                        out.print("<div class=\"listQuestion\" id=\"listQuestion\"> <div class=\"listQuestion__title\"> <i class=\"fas fa-list\"></i> <form action=\"EncuestaControlador\" method=\"post\"> <input required type=\"text\" id=\"txtEditarEncuesta\" name=\"txtEditarEncuesta\" value=\"" + encuesta.getEncuestaNombre() + "\"> <div class=\"botonera\"> <button class=\"btn btn--editar\" id=\"btnEditar\" type=\"submit\" name=\"btnEditarEncuesta\">Editar <i class=\"fas fa-pen\"></i></button>" 
+                                + " <a class=\"btn btn--eliminar link\" href=\"EncuestaControlador?nEncuesta=" + encuesta.getEncuestaId() + "\" id=\"btnEditar\">Eliminar <i class=\"fas fa-trash-alt\"></i></a> "
+                                        + " <a class=\"btn btn--imprimir link\" target=\"_blink\" href=\"pdf.jsp?target=id&id="+encuesta.getEncuestaId()+"&nombre="+encuesta.getEncuestaNombre()+"\" id=\"btnEditar\">Imprimir <i class=\"fas fa-file-pdf\"></i></a> </div></form> </div><div class=\"boxOption\"> <button type=\"submit\" name=\"btnAgregar\" class=\"btn btn--agregar\" id=\"btnAgregar\">Agregar <i class=\"fas fa-plus\"></i></button> </div><div class=\"listQuestion__body\"> <form action=\"#\" method=\"get\" class=\"formSearch\"> <input required type=\"text\" name=\"txtSearchTitle\" class=\"inputBuscador\" placeholder=\"Buscar\"> <i class=\"fas fa-search\"></i> </form> <div class=\"cards\" id=\"cards\">");
                         RespuestasImpt respuestasImpt = new RespuestasImpt();
                         PreguntasImp preguntasImp = new PreguntasImp();
 

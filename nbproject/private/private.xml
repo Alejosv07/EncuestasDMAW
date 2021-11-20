@@ -3,7 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/Code/NetBeansProjects/Encuestas/web/reportes/encuestaPreguntas.jrxml</file>
             <file>file:/D:/Code/NetBeansProjects/Encuestas/web/IndexAdmi.jsp</file>
+            <file>file:/D:/Code/NetBeansProjects/Encuestas/web/reportes/encuestaNombres.jrxml</file>
+            <file>file:/D:/Code/NetBeansProjects/Encuestas/src/java/Controladores/EncuestaControlador.java</file>
+            <file>file:/D:/Code/NetBeansProjects/Encuestas/web/IndexCliente.jsp</file>
+            <file>file:/D:/Code/NetBeansProjects/Encuestas/src/java/Controladores/PreguntasControlador.java</file>
+            <file>file:/D:/Code/NetBeansProjects/Encuestas/src/java/Controladores/ImprimirControlador.java</file>
+            <file>file:/D:/Code/NetBeansProjects/Encuestas/web/pdf.jsp</file>
         </group>
     </open-files>
 </project-private>

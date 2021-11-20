@@ -84,8 +84,9 @@ public final class IndexCliente_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("    <body>\r\n");
       out.write("        ");
 
-            Usuarios usuario = new Usuarios(1, "Alejandro", "Romero", "alejo@gmail.com", "1234");
-            session.setAttribute("usuario", usuario);
+            
+            Usuarios usuario = (Usuarios) session.getAttribute("usuario");
+            out.print(usuario.getUsuarioId());
         
       out.write("\r\n");
       out.write("        <!-- header -->\r\n");

@@ -6,6 +6,7 @@
 package Controladores;
 
 import Clases.Conexion;
+import Clases.Usuarios;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -16,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -58,10 +60,23 @@ public class LoginUsuarioControlador extends HttpServlet {
                 while (result.next()) {
                     if (result.getInt("resultado") == 0) {
                         request.getRequestDispatcher("login.jsp?error=noexiste").forward(request, response);
-                    } else {
-                        request.getRequestDispatcher("IndexCliente.jsp").forward(request, response);
                     }
                 }
+                HttpSession sesion = request.getSession();
+                PreparedStatement stat2 = con.prepareStatement("SELECT usuarioId, usuarioNombre, usuarioApellido, usuarioCorreo, usuarioClave FROM tblusuarios WHERE usuarioCorreo = ' " + email + " ' limit 1;");
+                ResultSet result2 = stat2.executeQuery();
+                int ide = -99;
+                Usuarios usuario = new Usuarios();
+                while (result2.next()) {
+                    usuario.setUsuarioNombre(result2.getString("usuarioNombre"));
+                    usuario.setUsuarioApellido(result2.getString("usuarioApellido"));
+                    usuario.setUsuarioCorreo(result2.getString("usuarioCorreo"));
+                    usuario.setUsuarioClave(result2.getString("usuarioClave"));
+                    usuario.setUsuarioId(result2.getInt("usuarioId"));
+                }
+
+                sesion.setAttribute("usuario", usuario);
+                request.getRequestDispatcher("IndexCliente.jsp").forward(request, response);
             }
 
         } catch (Exception ex) {

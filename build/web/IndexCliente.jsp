@@ -34,8 +34,9 @@
 
     <body>
         <%
-            Usuarios usuario = new Usuarios(1, "Alejandro", "Romero", "alejo@gmail.com", "1234");
-            session.setAttribute("usuario", usuario);
+            
+            Usuarios usuario = (Usuarios) session.getAttribute("usuario");
+            out.print(usuario.getUsuarioId() + "<br>" + usuario.getUsuarioApellido());
         %>
         <!-- header -->
         <header class="header">

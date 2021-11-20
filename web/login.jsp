@@ -30,7 +30,7 @@
 					<img src="images/survey3.png" alt="IMG">
 				</div>
 
-                            <form action="LoginUsuarioControlador" class="login100-form validate-form" method="post">
+                            <form action="LoginUsuarioControlador" class="login100-form validate-form" method="get">
 					<span class="login100-form-title">
 						Login
 					</span>

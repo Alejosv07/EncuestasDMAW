@@ -49,7 +49,7 @@ WHERE tblpreguntas.encuestaId =$P{Id}]]>
 			<textField>
 				<reportElement x="81" y="16" width="452" height="20" uuid="07a37296-6246-4070-8762-5c5b3c4d3a27"/>
 				<textElement>
-					<font size="14"/>
+					<font size="14" isUnderline="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{pregunta}]]></textFieldExpression>
 			</textField>

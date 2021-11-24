@@ -56,6 +56,7 @@ public class CrearUsuarioControlador extends HttpServlet {
                 if (result.getInt("resultado") == 0) {
                     request.getRequestDispatcher("signup.jsp?error=yaexiste").forward(request, response);
                 } else {
+                    
                     request.getRequestDispatcher("IndexCliente.jsp").forward(request, response);
                 }
         } catch (Exception ex) {

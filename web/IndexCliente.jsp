@@ -34,9 +34,7 @@
 
     <body>
         <%
-            
             Usuarios usuario = (Usuarios) session.getAttribute("usuario");
-            out.print(usuario.getUsuarioId() + "<br>" + usuario.getUsuarioApellido());
         %>
         <!-- header -->
         <header class="header">

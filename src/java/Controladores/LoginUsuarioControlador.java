@@ -7,6 +7,7 @@ package Controladores;
 
 import Clases.Conexion;
 import Clases.Usuarios;
+import Clases.UsuariosImp;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -38,7 +39,7 @@ public class LoginUsuarioControlador extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try {
+        try(PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             Connection con = null;
             //Statement st = null;
@@ -57,24 +58,18 @@ public class LoginUsuarioControlador extends HttpServlet {
                 //String query = "SELECT crearUsuario('"+ nombre +"', '"+ apellido +"', '"+ email +"', '"+ clave +"')";
                 //st.execute(query);
                 ResultSet result = stat.executeQuery();
+                Usuarios usuario = new Usuarios();
                 while (result.next()) {
                     if (result.getInt("resultado") == 0) {
                         request.getRequestDispatcher("login.jsp?error=noexiste").forward(request, response);
+                    }else{
+                        out.print("Hola llegue aqui");
+                        UsuariosImp usuariosImp = new UsuariosImp();
+                        usuario = usuariosImp.ListarPorCorreo(email);
+                        out.print("Hola me llamo "+usuario.getUsuarioNombre());
                     }
                 }
                 HttpSession sesion = request.getSession();
-                PreparedStatement stat2 = con.prepareStatement("SELECT usuarioId, usuarioNombre, usuarioApellido, usuarioCorreo, usuarioClave FROM tblusuarios WHERE usuarioCorreo = ' " + email + " ' limit 1;");
-                ResultSet result2 = stat2.executeQuery();
-                int ide = -99;
-                Usuarios usuario = new Usuarios();
-                while (result2.next()) {
-                    usuario.setUsuarioNombre(result2.getString("usuarioNombre"));
-                    usuario.setUsuarioApellido(result2.getString("usuarioApellido"));
-                    usuario.setUsuarioCorreo(result2.getString("usuarioCorreo"));
-                    usuario.setUsuarioClave(result2.getString("usuarioClave"));
-                    usuario.setUsuarioId(result2.getInt("usuarioId"));
-                }
-
                 sesion.setAttribute("usuario", usuario);
                 request.getRequestDispatcher("IndexCliente.jsp").forward(request, response);
             }

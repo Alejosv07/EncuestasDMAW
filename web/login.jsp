@@ -61,7 +61,7 @@
 						<span class="txt1">
 							Enlace a
 						</span>
-						<a class="txt2" href="#">
+						<a class="txt2" href="IndexCliente.jsp">
 							Encuestas
 						</a>
 					</div>

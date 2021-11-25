@@ -35,6 +35,9 @@
     <body>
         <%
             Usuarios usuario = (Usuarios) session.getAttribute("usuario");
+            if (usuario == null) {
+                request.getRequestDispatcher("login.jsp?error=logearse").forward(request, response);
+            }
         %>
         <!-- header -->
         <header class="header">
@@ -49,9 +52,9 @@
                             %></p>
                         <i class="fas fa-user"></i>
                     </div>
-                    <button type="submit" class="btn btn--vacio">
+                        <a type="submit" class="btn btn--vacio" href="CerrarSesionControlador">
                         <i class="fas fa-sign-out-alt"></i>
-                    </button>
+                    </a>
                 </li>
             </ul>
         </header>

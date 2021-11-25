@@ -6,14 +6,16 @@
 	<parameter name="Id" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="Titulo" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[SELECT
-     tblpreguntas.`pregunta` AS pregunta
-FROM
-     `tblpreguntas` tblpreguntas
+		<![CDATA[SELECT pregunta, tblrespuestas.respuesta FROM tblpreguntas
+INNER JOIN tblrespuestas ON tblpreguntas.preguntaId = tblrespuestas.preguntaId
 WHERE tblpreguntas.encuestaId =$P{Id}]]>
 	</queryString>
 	<field name="pregunta" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="respuesta" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<background>
@@ -21,47 +23,94 @@ WHERE tblpreguntas.encuestaId =$P{Id}]]>
 	</background>
 	<title>
 		<band height="79" splitType="Stretch">
-			<staticText>
-				<reportElement x="204" y="20" width="157" height="36" uuid="97d3cf45-bd3a-41eb-b624-236e0971cc6d"/>
+			<textField>
+				<reportElement x="188" y="15" width="199" height="64" uuid="7333c254-2c92-4e10-a1e1-ba80c50b70b4"/>
 				<textElement>
-					<font size="24"/>
+					<font size="36"/>
 				</textElement>
-				<text><![CDATA[Titulo]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$P{Titulo}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="425" y="-1" width="101" height="80" uuid="9e705e74-2070-47ba-b7a4-761a0f255def"/>
+				<imageExpression><![CDATA["D:\\Code\\NetBeansProjects\\Encuestas\\web\\images\\survey.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
 		<band height="35" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch">
+		<band height="37" splitType="Stretch">
 			<staticText>
-				<reportElement x="104" y="18" width="100" height="20" uuid="07fa31b3-076c-494b-80b7-18f87aa62426"/>
+				<reportElement x="108" y="0" width="100" height="20" uuid="07fa31b3-076c-494b-80b7-18f87aa62426"/>
 				<textElement>
-					<font size="14"/>
+					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[pregunta]]></text>
+				<text><![CDATA[Pregunta]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="325" y="0" width="100" height="20" uuid="a416f847-f40e-4bbb-bbbf-6660feae1ddd"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Respuesta]]></text>
+			</staticText>
+			<line>
+				<reportElement x="64" y="30" width="423" height="1" uuid="bd27ab2e-818b-4d7e-9a60-d37e791cfc4f"/>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch">
+		<band height="25" splitType="Stretch">
 			<textField>
-				<reportElement x="81" y="16" width="452" height="20" uuid="07a37296-6246-4070-8762-5c5b3c4d3a27"/>
+				<reportElement x="64" y="0" width="239" height="20" uuid="07a37296-6246-4070-8762-5c5b3c4d3a27"/>
 				<textElement>
 					<font size="14" isUnderline="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{pregunta}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="325" y="0" width="100" height="20" uuid="ef8ab6fb-f263-4fa0-a5cc-e1a66ed5c808"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{respuesta}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band height="8" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="38" splitType="Stretch">
+			<staticText>
+				<reportElement x="130" y="0" width="242" height="33" uuid="135514c7-9160-4cea-8c42-ba215df3aff7"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Fecha de generacion de reporte:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="372" y="0" width="183" height="33" uuid="c620c769-ac03-4167-bf69-edd21ae95b99"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageFooter>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="84" y="12" width="164" height="30" uuid="24f95801-eea6-4e8f-94a3-e19f9d381dc2"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Numero de Preguntas:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="64" y="11" width="423" height="1" uuid="b8ec39c8-8674-4b9c-9bbc-e2a91aba3e68"/>
+			</line>
+		</band>
 	</summary>
 </jasperReport>

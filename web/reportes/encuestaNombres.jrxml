@@ -79,14 +79,14 @@ FROM
 			<staticText>
 				<reportElement x="123" y="2" width="100" height="20" uuid="fe6e47e4-d41e-4e1e-8eb4-21ecda4b6f8c"/>
 				<textElement>
-					<font size="14"/>
+					<font size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[ID]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="277" y="2" width="100" height="20" uuid="d59d4193-b893-4079-bf3a-070abf399bf0"/>
 				<textElement>
-					<font size="14"/>
+					<font size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Nombre]]></text>
 			</staticText>

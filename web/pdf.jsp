@@ -21,7 +21,7 @@
     <body>
         <%
             String accion = request.getParameter("target");
-            if (request.getParameter("target") != null && request.getParameter("id") == null) {
+            if (request.getParameter("target") != null && request.getParameter("id") == null) { //nombres de encuestas
                 Conexion conexion = new Conexion();
                 Connection con = conexion.conectar();
                 File reportFile = new File(application.getRealPath("/reportes/encuestaNombres.jasper"));
@@ -33,12 +33,13 @@
                 salida.write(bytes, 0, bytes.length);
                 salida.flush();
                 salida.close();
-            } else if (request.getParameter("target") != null && request.getParameter("id") != null) {
+            } else if (request.getParameter("target") != null && request.getParameter("id") != null) { // preguntas de la encuesta
                 Conexion conexion = new Conexion();
                 Connection con = conexion.conectar();
                 File reportFile = new File(application.getRealPath("/reportes/encuestaPreguntas.jasper"));
                 Map<String, Object> parametro = new HashMap();
                 parametro.put("Id", Integer.valueOf(request.getParameter("id")));
+                parametro.put("Titulo", request.getParameter("titulo"));
                 byte[] bytes = JasperRunManager.runReportToPdf(reportFile.getPath(), parametro, con);
                 response.setContentType("application/pdf");
                 response.setContentLength(bytes.length);

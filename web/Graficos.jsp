@@ -41,19 +41,19 @@
                         <p class="text">Administrador</p>
                         <i class="fas fa-user"></i>
                     </div>
-                    <button type="submit" class="btn btn--vacio">
+                    <a type="submit" class="btn btn--vacio" href="CerrarSesionControlador">
                         <i class="fas fa-sign-out-alt"></i>
-                    </button>
+                    </a>
                 </li>
             </ul>
         </header>
-        <div class="containerGraficos" style="display: flex; flex-wrap: wrap; justify-content: center; padding: 2em; gap: 2em;">
+        <div class="containerGraficos" style="display: flex; flex-wrap: wrap; justify-content: center; padding: 2em; gap: 2em; height: 80vh;">
             <div style="box-shadow: 0 3px 6px; padding: 1em">
-                <h4>Encuestas màs respondidas</h4>
+                <h4>Encuestas más respondidas</h4>
                 <canvas id="encuestaMasrepondida"></canvas>
             </div>
             <div style="box-shadow: 0 3px 6px; padding: 1em">
-                <h4>Preguntas màs respondidas</h4>
+                <h4>Preguntas más respondidas</h4>
                 <canvas id="preguntaMasrepondida"></canvas>
             </div>
         </div>

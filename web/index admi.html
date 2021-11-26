@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
+    <style></style>
     <title>Encuestadora</title>
 </head>
 
@@ -29,90 +31,10 @@
             </li>
         </ul>
     </header>
+    <div class="containerfdd" style="width: 400px; height: 400px;">
 
-    <main class="main">
-        <!-- panel agregar survey-->
-        <div class="panelAgregar">
-            <form action="#" method="post">
-                <input type="text" name="text" class="inputText" placeholder="Nombre de encuesta">
-                <button type="submit" class="btn btn--agregar">Agregar <i class="fas fa-plus"></i></button>
-            </form>
-        </div>
-        <div class="mainbody">
-            <!-- panel de listas de encuentas -->
-            <div class="listSurvey">
-                <h2 class="listSurvey__title">Encuestas</h2>
-                <form action="#" method="get" class="formSearch">
-                    <input type="text" name="txtSearchTitle" class="inputBuscador" placeholder="Buscar">
-                    <i class="fas fa-search"></i>
-                </form>
-
-                <!-- si hay resgistro mostrar-->
-                <div class="listSurvey__body">
-                    <div class="boxSurvey">
-                        <p class="boxSurvey__title">Salud</p>
-                    </div>
-                    <div class="boxSurvey">
-                        <p class="boxSurvey__title">Salud2</p>
-                    </div>
-                    <div class="boxSurvey">
-                        <p class="boxSurvey__title">Salud2</p>
-                    </div>
-                </div>
-            </div>
-            <!-- si no hay registro -->
-            <!-- <h2 class="mensaje">Vaya parece que no hay encuestas registradas.</h2> -->
-
-            <!-- si hay registro mostrar -->
-            <div class="listQuestion" id="listQuestion">
-                <div class="listQuestion__title">
-                    <i class="fas fa-list"></i>
-                    <form action="#" method="post">
-                        <input type="text" disabled id="txtEditarEncuesta" value="Name survey" name="txtEditarEncuesta">
-                        <div class="botonera">
-                            <button class="btn btn--editar" id="btnEditar" name="btnEditarEncuesta">Editar <i class="fas fa-pen"></i></button>
-                            <a class="btn btn--eliminar link" href="?idEncuesta" id="btnEditar">Eliminar <i class="fas fa-trash-alt"></i></a>
-                        </div>
-                    </form>
-                </div>
-                <div class="boxOption">
-                    <button type="submit" name="btnAgregar" class="btn btn--agregar" id="btnAgregar">Agregar <i class="fas fa-plus"></i></button>
-                </div>
-                <div class="listQuestion__body">
-                    <!-- formSearch -->
-                    <form action="#" method="get" class="formSearch">
-                        <input type="text" name="txtSearchTitle" class="inputBuscador" placeholder="Buscar">
-                        <i class="fas fa-search"></i>
-                    </form>
-                    <!-- container cards -->
-                    <div class="cards" id="cards">
-                        <!-- card -->
-                        <form class="card" method="post" action="#">
-                            <div class="card__header">
-                                <p class="numero">1)</p>
-                                <a type="submit" name="btnBorrarPregunta" class="btn btn--vacio" href="#">
-                                    <i class="fas fa-trash-alt"></i>
-                                </a>
-                            </div>
-                            <div class="card__body">
-                                <input type="text" class="inputText" placeholder="Pregunta">
-                                <select name="tipoPregunta" id="option">
-                                    <option value="0">Complementar</option>
-                                    <option value="1">Opción multiple</option>
-                                </select>
-                                <div id="dinamico">
-                                    <!-- Aqui ira dinamico con js -->
-                                    <input type="text" class="inputText" placeholder="Respuesta" style="width: 100%;">
-                                </div>
-                                <button type="submit" class="btn btnGuardar" name="btnGuardar">Guardar</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </main>
+        <canvas id="myChart"></canvas>
+    </div>
     <footer class="footer">
         <h6 class="brandFooter">Design by BALR</h6>
         <a class="github link" href="https://github.com/Alejosv07">
@@ -120,17 +42,37 @@
             <i class="fab fa-github"></i>
         </a>
     </footer>
-    <script src="js/admi.js"></script>
+    <script>
+        const ctx = document.getElementById('myChart');
+        const myChart = new Chart(ctx, {
+            type: 'pie',
+            responsive: false,
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+        });
+    </script>
 </body>
-
-<div class="listQuestion__title"> <i class="fas fa-list"></i>
-    <form action="EncuestaControlador" method="post">
-        <input type="text" id="txtEditarEncuesta" name="txtEditarEncuesta" value="null">
-        <div class="botonera">
-            <button class="btn btn--editar" id="btnEditar" name="btnEditarEncuesta" type="submit">Guardar</button>
-            <a class="btn btn--eliminar link" href="?idEncuesta" id="btnEditar">Eliminar <i class="fas fa-trash-alt"></i></a>
-        </div>
-    </form>
-</div>
 
 </html>

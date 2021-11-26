@@ -5,7 +5,6 @@
  */
 package Interfaces;
 
-import Clases.Preguntas;
 import Clases.Respuestas;
 import java.util.ArrayList;
 

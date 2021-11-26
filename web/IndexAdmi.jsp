@@ -34,9 +34,14 @@
         <header class="header">
             <ul class="ul">
                 <li class="item">
-                    <h1 class="brand">Encuestadora</h1>
+                    <a href="IndexAdmi.jsp" style="text-decoration: none">
+                        <h1 class="brand">Encuestadora</h1>
+                    </a>
                 </li>
                 <li class="item">
+                    <a href="Graficos.jsp" style="text-decoration: none; background: white; margin: 0; padding: 0 0.5em; border-radius: 8px">
+                        <h3 style="color: #1E1731">Graficos</h3>
+                    </a>
                     <div id="identificator">
                         <p class="text">Administrador</p>
                         <i class="fas fa-user"></i>
@@ -90,9 +95,9 @@
                     Encuesta encuesta = (Encuesta) session.getAttribute("encuesta");
                     //out.print(encuesta.getEncuestaNombre());
                     if (encuesta != null) {
-                        out.print("<div class=\"listQuestion\" id=\"listQuestion\"> <div class=\"listQuestion__title\"> <i class=\"fas fa-list\"></i> <form action=\"EncuestaControlador\" method=\"post\"> <input required type=\"text\" id=\"txtEditarEncuesta\" name=\"txtEditarEncuesta\" value=\"" + encuesta.getEncuestaNombre() + "\"> <div class=\"botonera\"> <button class=\"btn btn--editar\" id=\"btnEditar\" type=\"submit\" name=\"btnEditarEncuesta\">Editar <i class=\"fas fa-pen\"></i></button>" 
+                        out.print("<div class=\"listQuestion\" id=\"listQuestion\"> <div class=\"listQuestion__title\"> <i class=\"fas fa-list\"></i> <form action=\"EncuestaControlador\" method=\"post\"> <input required type=\"text\" id=\"txtEditarEncuesta\" name=\"txtEditarEncuesta\" value=\"" + encuesta.getEncuestaNombre() + "\"> <div class=\"botonera\"> <button class=\"btn btn--editar\" id=\"btnEditar\" type=\"submit\" name=\"btnEditarEncuesta\">Editar <i class=\"fas fa-pen\"></i></button>"
                                 + " <a class=\"btn btn--eliminar link\" href=\"EncuestaControlador?nEncuesta=" + encuesta.getEncuestaId() + "\" id=\"btnEditar\">Eliminar <i class=\"fas fa-trash-alt\"></i></a> "
-                                        + " <a class=\"btn btn--imprimir link\" target=\"_blink\" href=\"pdf.jsp?target=id&id="+encuesta.getEncuestaId()+"&titulo="+encuesta.getEncuestaNombre()+" id=\"btnEditar\">Imprimir <i class=\"fas fa-file-pdf\"></i></a> </div></form> </div><div class=\"boxOption\"> <button type=\"submit\" name=\"btnAgregar\" class=\"btn btn--agregar\" id=\"btnAgregar\">Agregar <i class=\"fas fa-plus\"></i></button> </div><div class=\"listQuestion__body\"> <form action=\"#\" method=\"get\" class=\"formSearch\"> <input required type=\"text\" name=\"txtSearchTitle\" class=\"inputBuscador\" placeholder=\"Buscar\"> <i class=\"fas fa-search\"></i> </form> <div class=\"cards\" id=\"cards\">");
+                                + " <a class=\"btn btn--imprimir link\" target=\"_blink\" href=\"pdf.jsp?target=id&id=" + encuesta.getEncuestaId() + "&titulo=" + encuesta.getEncuestaNombre() + " id=\"btnEditar\">Imprimir <i class=\"fas fa-file-pdf\"></i></a> </div></form> </div><div class=\"boxOption\"> <button type=\"submit\" name=\"btnAgregar\" class=\"btn btn--agregar\" id=\"btnAgregar\">Agregar <i class=\"fas fa-plus\"></i></button> </div><div class=\"listQuestion__body\"> <form action=\"#\" method=\"get\" class=\"formSearch\"> <input required type=\"text\" name=\"txtSearchTitle\" class=\"inputBuscador\" placeholder=\"Buscar\"> <i class=\"fas fa-search\"></i> </form> <div class=\"cards\" id=\"cards\">");
                         RespuestasImpt respuestasImpt = new RespuestasImpt();
                         PreguntasImp preguntasImp = new PreguntasImp();
 
@@ -103,8 +108,8 @@
                             for (Preguntas pre : preguntasImp.ListarIDEncuesta(encuesta.getEncuestaId())) {
                                 if (respuestasImpt.ListarIDPregunta(pre.getPreguntaId()).size() > 0) {
 
-                                    out.print("<form class=\"card\" method=\"post\" action=\"PreguntasControlador\"> <div class=\"card__header\"> <p class=\"numero\">" + i + ")</p><a type=\"submit\" name=\"btnBorrarPregunta\" class=\"btn btn--vacio\" href=\"PreguntasControlador?nPregunta="+ pre.getPreguntaId()+"\"> <i class=\"fas fa-trash-alt\"></i> </a> </div>"
-                                            + "<div class=\"card__body\"><input required type=\"text\" class=\"inputText\" placeholder=\"Pregunta\" name=\"txtPregunta\" value=\"" + pre.getPregunta() + "\"><input required type=\"text\" class=\"inputText\" name=\"txtIDpregunta\" Style=\"Display: none;\" value=\"" + pre.getPreguntaId()+ "\">");
+                                    out.print("<form class=\"card\" method=\"post\" action=\"PreguntasControlador\"> <div class=\"card__header\"> <p class=\"numero\">" + i + ")</p><a type=\"submit\" name=\"btnBorrarPregunta\" class=\"btn btn--vacio\" href=\"PreguntasControlador?nPregunta=" + pre.getPreguntaId() + "\"> <i class=\"fas fa-trash-alt\"></i> </a> </div>"
+                                            + "<div class=\"card__body\"><input required type=\"text\" class=\"inputText\" placeholder=\"Pregunta\" name=\"txtPregunta\" value=\"" + pre.getPregunta() + "\"><input required type=\"text\" class=\"inputText\" name=\"txtIDpregunta\" Style=\"Display: none;\" value=\"" + pre.getPreguntaId() + "\">");
                                     if (pre.getPreguntaTipo() > 0) {
                                         out.print("<select name=\"tipoPregunta\" id=\"option\"> <option value=0>Complementar</option> <option value=1 selected>Opción multiple</option> </select> <div id=\"dinamico\">");
                                     } else {
@@ -112,7 +117,7 @@
                                     }
                                     int j = 1;
                                     for (Respuestas res : respuestasImpt.ListarIDPregunta(pre.getPreguntaId())) {
-                                        out.print("<input required type=\"text\" class=\"inputText\" placeholder=\"Respuesta\" style=\"width: 100%; margin-bottom:1em;\" value=\"" + res.getRespuesta() + "\" name=\"respuesta"+j+"\">");
+                                        out.print("<input required type=\"text\" class=\"inputText\" placeholder=\"Respuesta\" style=\"width: 100%; margin-bottom:1em;\" value=\"" + res.getRespuesta() + "\" name=\"respuesta" + j + "\">");
                                         j++;
                                     }
                                     out.print("</div><button type=\"submit\" class=\"btn btnGuardar\" name=\"btnGuardar\">Guardar</button> </div></form>");
